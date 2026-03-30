@@ -1,10 +1,10 @@
 export const latestTrade = {
   date: "2026-03-30",
   direction: "לונג",
-  entry: 18250,
-  exit: 18320,
-  profit: 350,
-  streak: 5,
+  entry: 24250,
+  exit: 24520,
+  profit: 450,
+  streak: 2,
 };
 
 export const updates = [
