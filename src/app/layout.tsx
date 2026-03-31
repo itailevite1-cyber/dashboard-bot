@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "דשבורד מעקב עסקאות של איתי טריידס",
 };
 
+import AuthProvider from "@/components/AuthProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl" className={`${heebo.variable} dark`}>
       <body className="font-heebo bg-zinc-950 text-zinc-100 antialiased min-h-screen">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

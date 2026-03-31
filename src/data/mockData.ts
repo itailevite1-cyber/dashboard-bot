@@ -9,6 +9,12 @@ export const latestTrade = {
 
 export const updates = [
   {
+    id: 2,
+    title: "השקה של הדשבורד",
+    date: "05/04/2026",
+    content: "מוזמנים לעקוב אחר הביצועים והשלבים להתחברות לבוט.",
+  },
+  {
     id: 1,
     title: "עדכון אסטרטגיה",
     date: "29/03/2026",
@@ -16,10 +22,35 @@ export const updates = [
   },
 ];
 
-export const guides = [
-  { id: 1, title: "חיבור לאחר עדכון", link: "/guides/הוראות עדכון גרסה בוט מסחר.pdf" },
-  { id: 2, title: "הפעלת ההתראה", link: "/guides/הוראות הפעלת התראה.pdf" },
-  { id: 3, title: "בדיקת תקינות", link: "/guides/בדיקת תקינות.pdf" },
+export interface GuideItem {
+  id: number;
+  title: string;
+  link: string;
+  type?: "document" | "video" | "checklist";
+}
+
+export interface GuideCategory {
+  title: string;
+  items: GuideItem[];
+}
+
+export const guideCategories: GuideCategory[] = [
+  {
+    title: "התחברות לבוט",
+    items: [
+      { id: 4, title: "רשימת ציוד", link: "/guides/רשימת ציוד.pdf", type: "document" },
+      { id: 5, title: "סרטון התחברות לבוט", link: "#", type: "video" },
+      { id: 6, title: "צ'קליסט וידוא התחברות", link: "#", type: "checklist" },
+    ],
+  },
+  {
+    title: "תפעול שוטף",
+    items: [
+      { id: 1, title: "חיבור לאחר עדכון", link: "/guides/הוראות עדכון גרסה בוט מסחר.pdf", type: "document" },
+      { id: 2, title: "הפעלת ההתראה", link: "/guides/הוראות הפעלת התראה.pdf", type: "document" },
+      { id: 3, title: "בדיקת תקינות", link: "/guides/בדיקת תקינות.pdf", type: "document" },
+    ],
+  },
 ];
 
 export const faqData = [
