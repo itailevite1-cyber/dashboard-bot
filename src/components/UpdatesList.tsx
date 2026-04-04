@@ -18,14 +18,28 @@ interface UpdatesListProps {
 export default function UpdatesList({ updates }: UpdatesListProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Sorting logic (DD/MM/YYYY)
+  // Robust date parsing (DD/MM/YYYY, DD.MM.YYYY, or YYYY-MM-DD)
   const sortedUpdates = [...updates].sort((a, b) => {
-    const [dayA, monthA, yearA] = a.date.split("/").map(Number);
-    const [dayB, monthB, yearB] = b.date.split("/").map(Number);
-    return (
-      new Date(yearB, monthB - 1, dayB).getTime() -
-      new Date(yearA, monthA - 1, dayA).getTime()
-    );
+    const parseDate = (dateStr: string) => {
+      if (!dateStr) return 0;
+      // Handle DD/MM/YYYY or DD.MM.YYYY
+      const dmy = dateStr.split(/[\/\.]/);
+      if (dmy.length === 3 && dmy[2].length === 4) {
+        const [day, month, year] = dmy.map(Number);
+        return new Date(year, month - 1, day).getTime();
+      }
+      // Handle YYYY-MM-DD
+      const ymd = dateStr.split("-");
+      if (ymd.length === 3 && ymd[0].length === 4) {
+        const [year, month, day] = ymd.map(Number);
+        return new Date(year, month - 1, day).getTime();
+      }
+      // Fallback for other formats
+      const timestamp = new Date(dateStr).getTime();
+      return isNaN(timestamp) ? 0 : timestamp;
+    };
+
+    return parseDate(b.date) - parseDate(a.date);
   });
 
   const displayUpdates = sortedUpdates.slice(0, 3);
