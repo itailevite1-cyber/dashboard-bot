@@ -39,7 +39,7 @@ export const guideCategories: GuideCategory[] = [
     title: "התחברות לבוט",
     items: [
       { id: 4, title: "רשימת ציוד", link: "/guides/רשימת ציוד.pdf", type: "document" },
-      { id: 5, title: "סרטון התחברות לבוט", link: "#", type: "video" },
+      { id: 5, title: "סרטון התחברות לבוט", link: "https://youtu.be/9S93kRAK2Zc", type: "video" },
       { id: 6, title: "צ'קליסט וידוא התחברות", link: "#", type: "checklist" },
     ],
   },
