@@ -76,7 +76,7 @@ export default function BacktestingPage() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/30 px-4 py-2 text-xs font-bold text-zinc-400">
               <Calendar size={14} />
-              Jan 1, 2026 — Apr 7, 2026
+              Jan 1, {new Date().getFullYear()} — {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
             </div>
             <Link 
               href="/" 
