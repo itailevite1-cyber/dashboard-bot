@@ -30,5 +30,13 @@ export async function seedInitialData() {
     console.log("Seeded initial updates.");
   }
 
+  // Seed Backtesting (if table is empty)
+  const { data: backtestCheck } = await supabase.from('backtesting').select('id').limit(1);
+  if (!backtestCheck || backtestCheck.length === 0) {
+    const { backtestingStats } = require("@/data/mockData");
+    await supabase.from('backtesting').insert([backtestingStats]);
+    console.log("Seeded initial backtesting stats.");
+  }
+
   console.log("Seeding complete.");
 }

@@ -4,7 +4,10 @@ import TradeCard from "@/components/TradeCard";
 import UpdatesList from "@/components/UpdatesList";
 import SidebarGuides from "@/components/SidebarGuides";
 import ChecklistModal from "@/components/ChecklistModal";
+import Link from "next/link";
+import { BarChart3 } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 interface DashboardContentProps {
@@ -52,6 +55,37 @@ export default function DashboardContent({ latestTrade, updates, guideCategories
         {/* Main Content (70%) */}
         <section className="space-y-8">
           <TradeCard trade={latestTrade} />
+          
+          {/* Backtesting Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Link 
+              href="/backtesting"
+              className="group relative flex w-full items-center justify-between overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-950 p-1 hover:border-violet-500/50 transition-all duration-500"
+            >
+              <div className="flex items-center gap-6 px-8 py-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 shadow-[0_0_20px_rgba(124,58,237,0.4)] group-hover:scale-110 transition-transform duration-500">
+                  <BarChart3 className="text-white" size={24} />
+                </div>
+                <div className="text-right">
+                  <h3 className="text-xl font-black italic text-zinc-100 italic tracking-tight">גישה למערכת בקטסטינג מלאה</h3>
+                  <p className="text-sm text-zinc-500">ניתוח ביצועים היסטורי, סטטיסטיקות וצפי רווחיות</p>
+                </div>
+              </div>
+              <div className="ml-8 hidden h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 group-hover:bg-violet-600 group-hover:border-violet-600 transition-all duration-500 sm:flex">
+                <svg className="h-5 w-5 text-zinc-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l7-7-7-7" />
+                </svg>
+              </div>
+              
+              {/* Animated Glow Overlay */}
+              <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_120%,rgba(139,92,246,0.1),transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            </Link>
+          </motion.div>
+
           <UpdatesList updates={updates} />
         </section>
 

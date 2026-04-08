@@ -15,7 +15,7 @@ export default async function AdminPage() {
 
   // Fetch initial data
   const { data: users } = await supabase.from('authorized_users').select('*').order('created_at', { ascending: false });
-  const { data: trades } = await supabase.from('trades').select('*').order('created_at', { ascending: false }).limit(10);
+  const { data: trades } = await supabase.from('trades').select('*').order('date', { ascending: false });
   const { data: updates } = await supabase.from('updates').select('*').order('created_at', { ascending: false });
 
   return (

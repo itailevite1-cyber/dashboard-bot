@@ -39,6 +39,7 @@ export const guideCategories: GuideCategory[] = [
     title: "התחברות לבוט",
     items: [
       { id: 4, title: "רשימת ציוד", link: "/guides/רשימת ציוד.pdf", type: "document" },
+      { id: 7, title: "איך מוסיפים את הבוט לגרף", link: "/guides/הוראות חיבור בוט מסחר.pdf", type: "document" },
       { id: 5, title: "סרטון התחברות לבוט", link: "https://youtu.be/9S93kRAK2Zc", type: "video" },
       { id: 6, title: "צ'קליסט וידוא התחברות", link: "#", type: "checklist" },
     ],
@@ -71,3 +72,12 @@ export const faqData = [
     answer: "אם ההתראה פועלת ויש סימן של חיצים ושעון הכל עובד.",
   },
 ];
+
+export const backtestingStats = {
+  totalTrades: 1240,
+  winRate: "68.5%",
+  profitFactor: 2.14,
+  drawdown: "4.2%",
+  netProfit: 145200,
+  sharpeRatio: 1.85,
+};

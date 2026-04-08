@@ -7,17 +7,17 @@ export default async function Home() {
   // Seed only if needed
   await seedInitialData();
 
-  // Fetch from Supabase
-  const { data: trades } = await supabase.from('trades').select('*').order('created_at', { ascending: false }).limit(1);
+  // Fetch latest trade specifically for dashboard
+  const { data: dashboardTradeData } = await supabase.from('dashboard_trade').select('*').eq('id', 1).single();
   const { data: updatesList } = await supabase.from('updates').select('*').order('created_at', { ascending: false });
-
-  const latestTrade = trades?.[0] || {
-    date: "---",
-    direction: "---",
-    entry: 0,
-    exit: 0,
-    profit: 0,
-    streak: 0
+  
+  const latestTrade = dashboardTradeData || {
+    date: "07.04",
+    direction: "Short",
+    entry: 24249,
+    exit: 24199,
+    profit: 1248,
+    streak: 3
   };
 
   return (
